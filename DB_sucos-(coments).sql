@@ -1,0 +1,92 @@
+/* CRIAÇÃO DO BANCO*/
+CREATE DATABASE sucos;
+
+/* EXCLUSÃO DE TABELA*/
+DROP DATABASE sucos;
+
+/* SELEÇÃO DE BANCO*/
+USE sucos;
+
+/*CRIAÇÃO DE TABELA*/
+Create table tbcliente
+(CPF VARCHAR (11),
+NOME VARCHAR (100),
+ENDERECO VARCHAR(150),
+ENDERECO2 VARCHAR (150),
+BAIRRO VARCHAR(50),
+CIDADE VARCHAR(50),
+ESTADO VARCHAR(50),
+CEP VARCHAR(8),
+IDADE SMALLINT,
+SEXO VARCHAR(1),
+LIMITE_CREDITO FLOAT,
+VOLUME_COMPRA FLOAT,
+PRIMEIRA_COMPRA BIT (1));
+
+Create table tabela_de_vendedores2
+(MATRICULA VARCHAR(5),
+NOME VARCHAR(100),
+PERCENTUAL_COMISSAO FLOAT
+);
+
+CREATE TABLE tbproduto (
+PRODUTO VARCHAR(20) NULL, 
+NOME VARCHAR(150) NULL, 
+EMBALAGEM VARCHAR(50) NULL, 
+TAMANHO VARCHAR(50) NULL, 
+SABOR VARCHAR(50) NULL, 
+PRECO_LISTA FLOAT NULL);
+
+/*INSERÇÃO DE VALORES*/
+INSERT INTO tbproduto(
+PRODUTO, NOME, EMBALAGEM, TAMANHO, SABOR, PRECO_LISTA) 
+VALUES(
+'1040107', 'Light - 350 ml - Melancia', 'Lata', '350 ml', 'Melancia', 4.56);
+
+INSERT INTO tbproduto (
+PRODUTO,  NOME, EMBALAGEM, TAMANHO, SABOR,
+PRECO_LISTA) VALUES
+('544931', 'Frescor do Verão - 350 ml - Limão', 'PET', '350 ml','Limão',3.20);
+
+INSERT INTO tbproduto (
+PRODUTO,  NOME, EMBALAGEM, TAMANHO, SABOR,
+PRECO_LISTA) VALUES
+('1078680', 'Frescor do Verão - 470 ml - Manga', 'Lata', '470 ml','Manga',5.18);
+
+INSERT INTO tabela_de_vendedores
+(MATRICULA, NOME, PERCENTUAL_COMISSAO)
+VALUES
+('00235', 'Marcio Almeida Silva', 0.8);
+
+INSERT INTO tabela_de_vendedores
+(MATRICULA, NOME, PERCENTUAL_COMISSAO)
+VALUES
+('00236', 'Cláudia Morais', 0.8);
+
+INSERT INTO tabela_de_vendedores
+(MATRICULA, NOME, PERCENTUAL_COMISSAO)
+VALUES
+('00233','João GEraldo da Fonseca', 0.10);
+
+/*EXLUSÃO DE TABELAS*/
+Drop table tabela_de_vendedores2;
+Drop table tbcliente3;
+
+/*ATUALIZAÇÃO DE TABELAS*/
+UPDATE tabela_de_vendedores SET PERCENTUAL_COMISSAO = 0.11
+WHERE MATRICULA = '00236';
+
+UPDATE tabela_de_vendedores SET NOME = 'José Geraldo da Fonseca Junior'
+WHERE MATRICULA = '00233';
+
+UPDATE tb_produto SET EMBALAGEM = 'Lata', PRECO_LISTA = 2.46
+WHERE PRODUTO = '544931';
+
+UPDATE tb_produto SET EMBALEGEM = 'Garrafa'
+WHERE PRODUTO = '1078680';
+
+/*ANALISE DE DADOS DA TABELA*/
+Select*from tabela_de_vendedores;
+Select*from tbcliente;
+select*from tbproduto;
+
