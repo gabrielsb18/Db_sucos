@@ -1,0 +1,60 @@
+/* ANÁLISE DE TABELAS*/
+
+SELECT * FROM tbcliente;
+
+SELECT CPF, NOME, ENDERECO1, ENDERECO2, BAIRRO, CIDADE, ESTADO, CEP,
+DATA_NASCIMENTO, IDADE, SEXO, LIMITE_CREDITO, VOLUME_COMPRA, PRIMEIRA_COMPRA
+FROM tbcliente;
+
+SELECT CPF, NOME FROM tbcliente;
+
+SELECT CPF, NOME FROM tbcliente LIMIT 5;
+
+SELECT CPF AS CPF_CLIENTE, NOME AS NOME_CLIENTE FROM tbcliente;
+
+SELECT NOME, CPF, SEXO, IDADE, DATA_NASCIMENTO FROM tbcliente;
+
+/* SELEÇÃO POR CHAVE PRIMARIA*/ 
+
+SELECT * FROM tbproduto WHERE PRODUTO = '544931';
+
+SELECT * FROM tbcliente WHERE CIDADE = 'Rio de Janeiro';
+
+SELECT * FROM tbproduto WHERE SABOR = 'Cítricos';
+
+UPDATE tbproduto 
+SET 
+    SABOR = 'Cítricos'
+WHERE
+    SABOR = 'Limão';
+
+/* Análise filtrada*/
+SELECT*FROM tbcliente WHERE IDADE > 22;
+SELECT*FROM tbcliente WHERE IDADE < 22;
+SELECT*FROM tbcliente WHERE IDADE = 22;
+SELECT*FROM tbcliente WHERE IDADE <= 22;
+SELECT*FROM tbcliente WHERE IDADE <> 22;
+
+SELECT *FROM tbcliente WHERE NOME > 'Fernando Cavalcante';
+SELECT *FROM tbcliente WHERE NOME >= 'Fernando Cavalcante';
+SELECT *FROM tbcliente WHERE NOME <> 'Fernando Cavalcante';
+
+SELECT*FROM tbproduto;
+SELECT*FROM tbproduto WHERE PRECO_LISTA > '16.008';
+SELECT*FROM tbproduto WHERE PRECO_LISTA <> '16.008';
+SELECT*FROM tbproduto WHERE PRECO_LISTA < '16.008';
+
+/* ANÁLISE COM FILTROS COMPOSTOS*/
+SELECT * FROM tbproduto WHERE PRECO_LISTA BETWEEN 16.007 AND 16.009; /* BETWEEN = entre */
+SELECT * FROM tbproduto WHERE PRECO_LISTA >= 16.007;
+SELECT * FROM tbproduto WHERE PRECO_LISTA <= 16.009;
+
+SELECT * FROM tbproduto WHERE PRECO_LISTA >= 16.007 AND PRECO_LISTA <= 16.009;
+
+SELECT*FROM tbcliente;
+SELECT * FROM tbcliente WHERE IDADE >= 18 AND IDADE <= 22; /* AND = estarei criando uma condição a mais */
+SELECT * FROM tbcliente WHERE IDADE >= 18 AND IDADE <= 22 AND SEXO = 'M';
+
+SELECT * FROM tbcliente WHERE (IDADE >= 18 AND IDADE <= 22 AND SEXO = 'M') /* OR = ou */
+ OR (cidade = 'Rio de Janeiro' OR BAIRRO = 'Jardins');
+
