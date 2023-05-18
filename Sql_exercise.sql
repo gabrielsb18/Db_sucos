@@ -1,0 +1,47 @@
+DROP TABLE tabela_de_vendedores;
+
+CREATE TABLE tabela_de_vendedores(
+MATRICULA VARCHAR (5),
+NOME VARCHAR (150),
+COMISSAO FLOAT,
+DATA_ADMISSAO DATE,
+DE_FERIAS BIT);
+
+ALTER TABLE tabela_de_vendedores ADD PRIMARY KEY (MATRICULA);
+
+INSERT INTO tabela_de_vendedores(
+MATRICULA, NOME, COMISSAO, DATA_ADMISSAO, DE_FERIAS)
+VALUES
+('00235', 'Márcio Almeida Silva', 0.8, '2014-08-15', 1);
+
+INSERT INTO tabela_de_vendedores(
+MATRICULA, NOME, COMISSAO, DATA_ADMISSAO, DE_FERIAS)
+VALUES
+('00236', 'Cláudia Morais', 0.8, '2013-09-17', 1);
+
+INSERT INTO tabela_de_vendedores(
+MATRICULA, NOME, COMISSAO, DATA_ADMISSAO, DE_FERIAS)
+VALUES
+('00237', 'Roberta Martíns', 1.1, '2017-03-18', 1);
+
+INSERT INTO tabela_de_vendedores(
+MATRICULA, NOME, COMISSAO, DATA_ADMISSAO, DE_FERIAS)
+VALUES
+('00238', 'Péricles Alves', 1.1, '2016-08-21', 0);
+
+UPDATE tabela_de_vendedores SET DE_FERIAS = 0
+WHERE MATRICULA = '00235';
+
+SELECT*FROM tabela_de_vendedores;
+
+/* SELEÇÃO DE DADOS DE FORMA INDIVIDUAL*/
+SELECT NOME, MATRICULA FROM tabela_de_vendedores;
+
+SELECT * FROM tabela_de_vendedores WHERE MATRICULA = '00236';
+SELECT*FROM tabela_de_vendedores WHERE COMISSAO > '0.10';
+
+/* FILTRAÇÃO DE INFROMAÇÕES*/
+SELECT*FROM tabela_de_vendedores WHERE YEAR (DATA_ADMISSAO) >=2016;
+
+/* FILTRO COMPOSTO*/
+SELECT*FROM tabela_de_vendedores WHERE YEAR (DATA_ADMISSAO) < 2016 AND DE_FERIAS = 1;  
